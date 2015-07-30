@@ -1,4 +1,4 @@
-#!/usr/bin/python2.4 -tt
+#!/usr/bin/python -tt
 # Copyright 2010 Google Inc.
 # Licensed under the Apache License, Version 2.0
 # http://www.apache.org/licenses/LICENSE-2.0
@@ -17,7 +17,13 @@
 # Return the resulting string.
 def verbing(s):
   # +++your code here+++
-  return
+  if len(s) < 3:
+    return s
+  #if s[-3:] == 'ing':
+  if s.endswith('ing'):
+    return s + 'ly'
+  else:
+    return s + 'ing'
 
 
 # E. not_bad
@@ -30,7 +36,18 @@ def verbing(s):
 # This dinner is good!
 def not_bad(s):
   # +++your code here+++
-  return
+  not_idx = s.find('not')
+  bad_idx = s.find('bad')
+
+  if not_idx < 0 or bad_idx < 0:
+    return s
+
+  while not_idx >= 0 and bad_idx >= not_idx + len('not'):
+    s = s.replace(s[not_idx:(bad_idx + len('bad'))], 'good')
+    not_idx = s.find('not')
+    bad_idx = s.find('bad')
+
+  return s
 
 
 # F. front_back
@@ -42,7 +59,21 @@ def not_bad(s):
 #  a-front + b-front + a-back + b-back
 def front_back(a, b):
   # +++your code here+++
-  return
+  if not(len(a)%2 == 0):
+    a_front = a[:(len(a)/2 + 1)]
+    a_back = a[(len(a)/2 + 1):]
+  else:
+    a_front = a[:(len(a)/2)]
+    a_back = a[(len(a)/2):]
+
+  if not(len(b)%2 == 0):
+    b_front = b[:(len(b)/2 + 1)]
+    b_back = b[(len(b)/2 + 1):]
+  else:
+    b_front = b[:(len(b)/2)]
+    b_back = b[(len(b)/2):]
+
+  return (a_front + b_front + a_back + b_back)
 
 
 # Simple provided test() function used in main() to print
