@@ -63,6 +63,7 @@ def dict_generator(filename):
 
   dic = dict(zip(key_list, val_list))
   fd.close()
+
   return dic
 
 
@@ -70,7 +71,10 @@ def print_words(filename):
   wordc_dict = {}
 
   wordc_dict = dict_generator(filename)
-  print wordc_dict.items()
+
+  for word in sorted(wordc_dict.keys()):
+    print word + ' ' + str(wordc_dict[word])
+  
 
 
 # This basic command line argument parsing code is provided and
