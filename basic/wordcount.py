@@ -45,7 +45,33 @@ import sys
 # and builds and returns a word/count dict for it.
 # Then print_words() and print_top() can just call the utility function.
 
-###
+
+def dict_generator(filename):
+  fd = open(filename, 'rU')
+  key_list = []
+  val_list = []
+  dic = {}
+
+  for line in fd:
+    for word in line.split(): 
+      word_low = word.lower()
+      if word_low in key_list:
+        val_list[key_list.index(word_low)] += 1
+      else:
+        key_list.append(word_low)
+        val_list.append(1)
+
+  dic = dict(zip(key_list, val_list))
+  fd.close()
+  return dic
+
+
+def print_words(filename):
+  wordc_dict = {}
+
+  wordc_dict = dict_generator(filename)
+  print wordc_dict.items()
+
 
 # This basic command line argument parsing code is provided and
 # calls the print_words() and print_top() functions which you must define.
