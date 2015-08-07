@@ -72,6 +72,37 @@ def print_words(filename):
     print word + ' ' + str(wordc_dict[word])
   
 
+def print_top(filename):
+  wordc_dict = {}
+  ls_key = []
+  ls_val = []
+
+  wordc_dict = dict_generator(filename)
+  ls_key = wordc_dict.keys()
+  ls_val = wordc_dict.values()
+
+  # Insertion sort
+  for j in range(1, len(ls_val)):
+    v_key = ls_val[j]
+    k_key = ls_key[j]
+    i = j - 1
+
+    while i >= 0 and ls_val[i] < v_key:
+      ls_val[i + 1] = ls_val[i]
+      ls_key[i + 1] = ls_key[i]
+      i = i - 1
+
+    ls_val[i + 1] = v_key
+    ls_key[i + 1] = k_key
+
+  if len(ls_val) < 20:
+    range_end = len(ls_val)
+  else:
+    range_end = 20
+
+  for k in range(range_end):
+    print ls_key[k] + ' ' + str(ls_val[k])
+ 
 
 # This basic command line argument parsing code is provided and
 # calls the print_words() and print_top() functions which you must define.
