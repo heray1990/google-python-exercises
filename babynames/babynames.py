@@ -88,8 +88,9 @@ def main():
       for name in name_list: 
         print name
     else:
-      print name_list
-      #write the text output to a file
+      f = open(filename + '.summary', 'w')
+      for name in name_list: 
+        f.write(name + '\n')
   
 if __name__ == '__main__':
   main()
