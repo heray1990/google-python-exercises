@@ -85,7 +85,8 @@ def main():
     name_list = extract_names(filename)
 
     if summary == False:
-      print name_list
+      for name in name_list: 
+        print name
     else:
       print name_list
       #write the text output to a file
