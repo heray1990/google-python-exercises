@@ -42,8 +42,12 @@ def extract_names(filename):
   """
   # +++your code here+++
   f = open(filename, 'rU')
-  tuples = re.findall(r'(Popularity in )(\d\d\d\d)', f.read())
-  print tuples[0][1]
+  file_strings = f.read()
+  tuples = re.findall(r'(Popularity in )(\d\d\d\d)', file_strings)
+  year = tuples[0][1]
+  print year
+  tuples = re.findall(r'<td>(\d+)</td><td>(\w+)</td><td>(\w+)</td>', file_strings)
+  print tuples
 
   return [] 
 
