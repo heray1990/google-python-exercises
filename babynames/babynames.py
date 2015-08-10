@@ -56,7 +56,7 @@ def extract_names(filename):
     for nr_tuple in tuples:
       nr_dict[nr_tuple[i]] = nr_tuple[0]
 
-  for key in nr_dict.keys():
+  for key in sorted(nr_dict.keys()):
     output_ls.append(key + ' ' + nr_dict[key])
 
   return output_ls 
