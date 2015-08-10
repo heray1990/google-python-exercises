@@ -59,8 +59,9 @@ def extract_names(filename):
   for key in sorted(nr_dict.keys()):
     output_ls.append(key + ' ' + nr_dict[key])
 
-  return output_ls 
+  f.close()
 
+  return output_ls 
 
 def main():
   # This command-line parsing code is provided.
@@ -91,6 +92,8 @@ def main():
       f = open(filename + '.summary', 'w')
       for name in name_list: 
         f.write(name + '\n')
+
+  f.close()
   
 if __name__ == '__main__':
   main()
